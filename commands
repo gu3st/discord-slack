@@ -11,7 +11,7 @@ is_webhook() {
   echo "$1" | grep -E '^http[s]?://'
 }
 
-get_slack_root() {
+get_discord_root() {
   if [[ -z $(is_webhook "$1") ]]; then
     verify_app_name "$1"
     APP="$1"
@@ -30,29 +30,29 @@ get_webhook() {
 }
 
 case "$1" in
-  slack:set)
-    SLACK_ROOT=$(get_slack_root "$2")
+  discord:set)
+    DISCORD_ROOT=$(get_discord_root "$2")
     WEBHOOK=$(get_webhook "$2" "$3")
     [[ -z $WEBHOOK ]] && echo "Please specify at least a webhook URL" && exit 1
     [[ -z $(is_webhook "$WEBHOOK") ]] && echo "Webhook has to be an URL" && exit 1
-    echo "$WEBHOOK" > "$SLACK_ROOT/SLACK_URL"
+    echo "$WEBHOOK" > "$DISCORD_ROOT/DISCORD_URL"
     ;;
 
-  slack:clear)
-    SLACK_ROOT=$(get_slack_root "$2")
-    rm "$SLACK_ROOT/SLACK_URL"
+  discord:clear)
+    DISCORD_ROOT=$(get_discord_root "$2")
+    rm "$DISCORD_ROOT/DISCORD_URL"
     ;;
 
-  slack:get)
-    SLACK_ROOT=$(get_slack_root "$2")
-    cat "$SLACK_ROOT/SLACK_URL"
+  discord:get)
+    DISCORD_ROOT=$(get_discord_root "$2")
+    cat "$DISCORD_ROOT/DISCORD_URL"
     ;;
 
   help)
     HELP=$(cat<<EOF
-    slack:set [app] <webhook_url>, Set Slack WebHook URL
-    slack:clear [app], Clears Slack WebHook URL
-    slack:get [app], Display Slack WebHook URL
+    discord:set [app] <webhook_url>, Set Discord WebHook URL
+    discord:clear [app], Clears Discord WebHook URL
+    discord:get [app], Display Discord WebHook URL
 EOF
 )
     if [[ -n $DOKKU_API_VERSION ]]; then
