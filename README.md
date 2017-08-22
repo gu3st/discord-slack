@@ -1,28 +1,27 @@
-# Dokku Slack
+# Dokku Discord
 
-Dokku Slack is a plugin for [Dokku](https://github.com/progrium/dokku) that notifies [Slack](http://www.slack.com) of deployments.
+Dokku Discord is a plugin for [Dokku](https://github.com/progrium/dokku) that notifies [Discord](http://www.discordapp.com) of deployments.
 
 ## Installation
 
 ```sh
 # dokku 0.3.26
-$ git clone https://github.com/ribot/dokku-slack /var/lib/dokku/plugins/slack
+$ git clone https://github.com/gu3st/dokku-discord /var/lib/dokku/plugins/discord
 
 # dokku 0.4+
-$ dokku plugin:install https://github.com/ribot/dokku-slack.git
+$ dokku plugin:install https://github.com/gu3st/dokku-discord.git
 ```
 
 ## Commands
 
 ```sh
 $ dokku help
-    slack:set <app> <webhook_url>                   Set Slack WebHook URL
-    slack:clear <app>                               Clears Slack WebHook URL
-    slack:get <app>                                 Display Slack WebHook URL
+    discord:set <app> <webhook_url>                   Set Discord WebHook URL
+    discord:clear <app>                               Clears Discord WebHook URL
+    discord:get <app>                                 Display Discord WebHook URL
 ```
 
-To get **WebHook URL** you need to create a new
-[**Incoming WebHook integration**](https://slack.com/services/new/incoming-webhook).
+To get **WebHook URL** you need to create a new Webhook URL
 
 ## License
 
