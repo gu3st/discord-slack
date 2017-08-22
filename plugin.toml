@@ -1,4 +1,4 @@
 [plugin]
-description = "Slack notifier on deploy"
+description = "Discord notifier on deploy"
 version = "0.4.0"
 [plugin.config]
